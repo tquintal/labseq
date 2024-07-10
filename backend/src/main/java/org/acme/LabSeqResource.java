@@ -35,13 +35,13 @@ public class LabSeqResource {
         }
 
         int startIndex = 4;
-        if (cache.size() > 4) startIndex = cache.size();
+        if (cache.size() > 4) startIndex = cache.size(); // ! cache.size() - 4 ??
 
         for (int i = startIndex; i <= number; i++) {
-            BigInteger val = cache.get(i-4).add(cache.get(i-3));
+            BigInteger val = cache.get(i - 4).add(cache.get(i - 3));
             cache.put(i, val);
         };
         
-        return "not cache: " + String.valueOf(cache.get(number));
+        return "not cache: " + cache.get(number);
     }
 }
