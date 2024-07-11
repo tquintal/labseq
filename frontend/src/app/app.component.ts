@@ -25,7 +25,9 @@ export class AppComponent {
     this.error = '';
   }
 
-  handleCalculate() {
+  handleCalculate(e: Event) {
+    e.preventDefault();
+
     if (this.inputValue.trim() === '' || isNaN(Number(this.inputValue))) {
       this.error = 'please insert a valid integer';
       return;
