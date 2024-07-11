@@ -26,12 +26,15 @@ public class LabSeqResource {
     @Path("/{number}")
     @Produces(MediaType.TEXT_PLAIN)
     public String labseq(@PathParam("number") int number) {
+        // ? [IMPLEMENT]: Retornar um objeto ao invés de uma string
+        // ? Um objeto com isCached e value
+
         if (number < 0) {
             return "Can't be negative";
         }
         
-        if (cache.containsKey(number)) {
-            return "cache: " + cache.get(number);
+        if (cache.containsKey(number)) {            
+            return String.valueOf(cache.get(number));
         }
 
         int startIndex = 4;
@@ -42,6 +45,6 @@ public class LabSeqResource {
             cache.put(i, val);
         };
         
-        return "not cache: " + cache.get(number);
+        return String.valueOf(cache.get(number));
     }
 }
