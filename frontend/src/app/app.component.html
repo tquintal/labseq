@@ -1,16 +1,10 @@
-<main
-  class="flex flex-col items-center justify-center min-h-screen text-white bg-gray-900"
->
-  <div
-    class="p-6 sm:m-6 bg-gray-800 sm:rounded-lg sm:shadow-xl w-full max-sm:min-h-[100vh] sm:w-96 flex flex-col gap-4"
-  >
+<main class="flex flex-col items-center justify-center min-h-screen text-white bg-gray-900">
+  <div class="p-6 sm:m-6 bg-gray-800 sm:rounded-lg sm:shadow-xl w-full max-sm:min-h-[100vh] sm:w-96 flex flex-col gap-4">
     <div class="flex-grow"></div>
     <div class="flex flex-col justify-center h-full gap-12">
       <h1 class="text-2xl font-bold">Labseq Sequence Calculator</h1>
       <div>
-        <label for="inputNumber" class="block mb-2"
-          >Enter a number for the sequence:</label
-        >
+        <label for="inputNumber" class="block mb-2">Enter a number for the sequence:</label>
         <form class="flex gap-2">
           <input
             type="string"
@@ -27,12 +21,9 @@
             Calculate
           </button>
         </form>
-        <div *ngIf="error" class="mt-2 font-bold text-red-500">
-          Error: {{ error }}
-        </div>
+        <div *ngIf="error" class="mt-2 font-bold text-red-500">Error: {{ error }}</div>
         <div *ngIf="data !== undefined" class="mt-2">
-          Sequence result for <span class="font-bold">{{ value }}</span
-          >:
+          Sequence result for <span class="font-bold">{{ value }}</span>:
           <span class="font-bold text-green-500 break-words">{{ data }}</span>
         </div>
       </div>
@@ -41,21 +32,9 @@
     <footer class="mt-8 mb-4 text-sm text-center text-gray-400">
       Made by Tomás Quintal<br />
       GitHub:
-      <a
-        href="https://github.com/tquintal"
-        rel="noopener noreferrer"
-        target="_blank"
-        class="underline"
-        >tquintal</a
-      ><br />
+      <a href="https://github.com/tquintal" rel="noopener noreferrer" target="_blank" class="underline">tquintal</a><br />
       LinkedIn:
-      <a
-        href="https://www.linkedin.com/in/tpquintal/"
-        rel="noopener noreferrer"
-        target="_blank"
-        class="underline"
-        >tpquintal</a
-      >
+      <a href="https://www.linkedin.com/in/tpquintal/" rel="noopener noreferrer" target="_blank" class="underline">tpquintal</a>
     </footer>
   </div>
 </main>

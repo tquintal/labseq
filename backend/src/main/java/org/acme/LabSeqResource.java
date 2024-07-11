@@ -13,6 +13,7 @@ import jakarta.ws.rs.core.MediaType;
 @Path("/labseq")
 public class LabSeqResource {
 
+    // Creates the cache object and loads it's initial values
     private Map<Integer, BigInteger> cache = new HashMap<>();
 
     {
@@ -26,25 +27,21 @@ public class LabSeqResource {
     @Path("/{number}")
     @Produces(MediaType.TEXT_PLAIN)
     public String labseq(@PathParam("number") int number) {
-        // ! [IMPLEMENT]: Retornar um objeto ao invés de uma string
-        // ! Um objeto com isCached e value
-        // ! Ou então um log com a informação do cache
-
         if (number < 0) {
             return "Can't be negative";
         }
         
+        // Checks if the value exists in cache and returns it instead of repeating the calculations
         if (cache.containsKey(number)) {            
             return String.valueOf(cache.get(number));
         }
 
-        int startIndex = 4;
-        if (cache.size() > 4) startIndex = cache.size(); // ! cache.size() - 4 ??
-
-        for (int i = startIndex; i <= number; i++) {
+        // Calculates the sequence up to the provided number and stores the values in the cache
+        // Starts at "i = 4" because there's already 4 values/indexes in the cache
+        for (int i = 4; i <= number; i++) {
             BigInteger val = cache.get(i - 4).add(cache.get(i - 3));
-            cache.put(i, val);
-        };
+            cache.put(i, val);            
+        }
         
         return String.valueOf(cache.get(number));
     }

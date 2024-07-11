@@ -9,6 +9,7 @@ import { NgClass, NgIf } from '@angular/common';
   imports: [RouterOutlet, NgIf, NgClass],
   templateUrl: './app.component.html',
 })
+
 export class AppComponent {
   value = '0';
   inputValue = '0';
