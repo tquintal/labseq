@@ -24,15 +24,14 @@ This project implements a REST API service using Quarkus (Java) and a simple Jav
 3. Access the OpenAPI specification at: http://localhost:8080/q/openapi
 4. Accessing the API Documentation (Development Environment Only)
 
-The API documentation provides a comprehensive overview of the available endpoints, parameters, and responses. However, it is only accessible when running the backend in the development environment.
+   The API documentation provides a comprehensive overview of the available endpoints, parameters, and responses. However, it is only accessible when running the backend in the development environment.
+   Steps:
 
-Steps:
+   Navigate to the backend directory: cd backend
+   Run the development command: quarkus dev
+   Access the API documentation: http://localhost:8080/q/swagger-ui/
 
-    Navigate to the backend directory: cd backend
-    Run the development command: quarkus dev
-    Access the API documentation: http://localhost:8080/q/swagger-ui/
-
-Note: This documentation is only available during development. For production environments, refer to the provided OpenAPI specification.
+   Note: This documentation is only available during development. For production environments, refer to the provided OpenAPI specification.
 
 ### Technologies
 
