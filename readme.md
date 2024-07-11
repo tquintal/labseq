@@ -25,6 +25,7 @@ This project implements a REST API service using Quarkus (Java) and a simple Jav
 4. Accessing the API Documentation (Development Environment Only)
 
    The API documentation provides a comprehensive overview of the available endpoints, parameters, and responses. However, it is only accessible when running the backend in the development environment.
+
    Steps:
 
    Navigate to the backend directory: cd backend
