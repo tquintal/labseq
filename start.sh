@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Backend build
 cd backend/
 ./mvnw clean package
