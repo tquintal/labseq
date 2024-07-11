@@ -9,6 +9,7 @@ This project implements a REST API service using Quarkus (Java) and a simple Jav
 - Java
 - Maven
 - Node.js and npm
+- Docker
 
 ### Running the Project
 
