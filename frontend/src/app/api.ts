@@ -5,13 +5,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+
 export class DataService {
-  // private apiUrl = 'http://localhost:8080/labseq/10000';
-  private apiUrl = 'http://localhost:8080/labseq/27';
+  private apiUrl = 'http://localhost:8080/labseq/';
 
   constructor(private http: HttpClient) {}
 
-  getData(): Observable<string> {
-    return this.http.get(this.apiUrl, { responseType: 'text' });
+  getData(value: string): Observable<string> {
+    return this.http.get(this.apiUrl + value, { responseType: 'text' });
   }
 }

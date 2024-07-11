@@ -11,21 +11,28 @@
         <label for="inputNumber" class="block mb-2"
           >Enter a number for the sequence:</label
         >
-        <div class="flex gap-4">
+        <form class="flex gap-2">
           <input
-            id="inputNumber"
-            type="number"
-            max="10000"
-            class="p-2 text-white bg-gray-700 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
+            type="string"
+            (change)="onValueChange($event)"
+            (click)="handleInputClick()"
+            class="w-full p-2 text-white bg-gray-700 border rounded-md focus:outline-none focus:border-blue-500"
+            [ngClass]="{ 'border-red-500': error, 'border-gray-300': !error }"
           />
           <button
+            type="submit"
+            (click)="handleCalculate()"
             class="px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-600 focus:outline-none focus:bg-blue-600"
           >
             Calculate
           </button>
+        </form>
+        <div *ngIf="error" class="mt-2 font-bold text-red-500">
+          Error: {{ error }}
         </div>
         <div *ngIf="data !== undefined" class="mt-2">
-          Sequence result for <span class="font-bold">4</span>:
+          Sequence result for <span class="font-bold">{{ value }}</span
+          >:
           <span class="font-bold text-green-500 break-words">{{ data }}</span>
         </div>
       </div>

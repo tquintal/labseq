@@ -26,8 +26,9 @@ public class LabSeqResource {
     @Path("/{number}")
     @Produces(MediaType.TEXT_PLAIN)
     public String labseq(@PathParam("number") int number) {
-        // ? [IMPLEMENT]: Retornar um objeto ao invés de uma string
-        // ? Um objeto com isCached e value
+        // ! [IMPLEMENT]: Retornar um objeto ao invés de uma string
+        // ! Um objeto com isCached e value
+        // ! Ou então um log com a informação do cache
 
         if (number < 0) {
             return "Can't be negative";
