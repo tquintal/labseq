@@ -9,7 +9,6 @@ import { NgClass, NgIf } from '@angular/common';
   imports: [RouterOutlet, NgIf, NgClass],
   templateUrl: './app.component.html',
 })
-
 export class AppComponent {
   value = '0';
   inputValue = '0';
@@ -46,7 +45,7 @@ export class AppComponent {
 
     this.value = this.inputValue;
 
-    this.dataService.getData(this.inputValue).subscribe((data) => {
+    this.dataService.getData(parseInt(this.inputValue)).subscribe((data) => {
       this.data = data;
     });
 
