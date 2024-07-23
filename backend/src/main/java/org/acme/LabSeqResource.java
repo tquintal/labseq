@@ -9,6 +9,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
 
 @Path("/labseq")
 public class LabSeqResource {
@@ -26,23 +27,32 @@ public class LabSeqResource {
     @GET
     @Path("/{number}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String labseq(@PathParam("number") int number) {
+    public Response labseq(@PathParam("number") String numberStr) {
+        int number;
+        
+        // Tries to parse the input string to an integer and returns a 400 error if the format is invalid
+        try {
+            number = Integer.parseInt(numberStr);
+        } catch (NumberFormatException e) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("Invalid number format").build();
+        }
+        
         if (number < 0) {
-            return "Can't be negative";
+            return Response.status(Response.Status.BAD_REQUEST).entity("Can't be negative").build();
         }
         
         // Checks if the value exists in cache and returns it instead of repeating the calculations
         if (cache.containsKey(number)) {            
-            return String.valueOf(cache.get(number));
+            return Response.ok(cache.get(number).toString()).build();
         }
 
         // Calculates the sequence up to the provided number and stores the values in the cache
-        // Starts at "i = 4" because there's already 4 values/indexes in the cache
-        for (int i = 4; i <= number; i++) {
+        // Starts at "i = cache.size()" to avoid recalculating values that are already stored in the cache
+        for (int i = cache.size(); i <= number; i++) {
             BigInteger val = cache.get(i - 4).add(cache.get(i - 3));
             cache.put(i, val);            
         }
         
-        return String.valueOf(cache.get(number));
+        return Response.ok(cache.get(number).toString()).build();
     }
 }
