@@ -40,6 +40,10 @@ public class LabSeqResource {
         if (number < 0) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Can't be negative").build();
         }
+
+        if (number > 10000) {
+            return Response.status(Response.Status.BAD_REQUEST).entity("The maximum value is 10 000").build();
+        }
         
         // Checks if the value exists in cache and returns it instead of repeating the calculations
         if (cache.containsKey(number)) {            

@@ -10,7 +10,7 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  getData(value: number): Observable<string> {
+  getData(value: string): Observable<string> {
     return this.http.get(this.apiUrl + value, { responseType: 'text' });
   }
 }

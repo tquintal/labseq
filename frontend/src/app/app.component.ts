@@ -11,14 +11,14 @@ import { NgClass, NgIf } from '@angular/common';
 })
 export class AppComponent {
   value = '0';
-  inputValue = '0';
+  inputValueStr = '0';
   error = '';
-  data: any;
+  data = '';
 
   constructor(private dataService: DataService) {}
 
   onValueChange(e: Event) {
-    this.inputValue = (e.target as HTMLInputElement).value;
+    this.inputValueStr = (e.target as HTMLInputElement).value;
   }
 
   handleInputClick() {
@@ -28,24 +28,26 @@ export class AppComponent {
   handleCalculate(e: Event) {
     e.preventDefault();
 
-    if (this.inputValue.trim() === '' || isNaN(Number(this.inputValue))) {
+    if (this.inputValueStr.trim() === '' || isNaN(Number(this.inputValueStr))) {
       this.error = 'please insert a valid integer';
       return;
     }
 
-    if (parseInt(this.inputValue) < 0) {
+    const inputValue = parseInt(this.inputValueStr);
+
+    if (inputValue < 0) {
       this.error = "can't be negative";
       return;
     }
 
-    if (parseInt(this.inputValue) > 10000) {
+    if (inputValue > 10000) {
       this.error = 'the maximum value is 10 000';
       return;
     }
 
-    this.value = this.inputValue;
+    this.value = this.inputValueStr;
 
-    this.dataService.getData(parseInt(this.inputValue)).subscribe((data) => {
+    this.dataService.getData(this.inputValueStr).subscribe((data) => {
       this.data = data;
     });
 
